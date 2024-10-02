@@ -263,7 +263,7 @@
 </head>
 
 <body>
-    <div class="container-fluid card-container" style="display: flex; flex-direction: column;">
+    <div class="container-fluid card-container" style="display: flex; flex-direction: column;" onclick="playVideo()">
         <h1 class="birthday-header">HAPPY B'DAY SANEEE!!!</h1>
         <div class="birthday-card" id="birthday-card" onclick="hideCard()">
             <div class="image-placeholder">
@@ -327,6 +327,9 @@
             videoContainer.style.display = 'none'; // Hide the video container
             birthdayCard.style.display = 'block'; // Show the birthday card
         };
+        function playVideo() {
+            birthdayVideo.play();
+        }
         const today = new Date();
         const isBirthday = (today.getMonth() === 9 && today.getDate() === 3); // Months are zero-indexed
 
