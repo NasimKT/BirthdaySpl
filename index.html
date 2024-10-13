@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Happy Birthday Thallee!!!</title>
+    <title>Happy Birthday!!!</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -32,7 +32,6 @@
         video::-webkit-media-controls {
             display: none !important;
         }
-
 
         /* Center the content */
         .card-container {
@@ -163,38 +162,6 @@
             }
         }
 
-        /* Reuse the same styling as .birthday-card */
-        .video-container {
-            background-color: #1f1f1f;
-            border: 2px solid #00b7ff;
-            /* Same border as the card */
-            box-shadow: 0 4px 15px rgba(0, 204, 255, 0.555);
-            /* Same shadow as the card */
-            border-radius: 10px;
-            /* Same rounded corners */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 90%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .video-container:hover {
-            transform: translateY(-10px);
-            /* Lift the video container on hover */
-            box-shadow: 0 8px 20px rgba(0, 204, 255, 0.555);
-            /* Larger shadow on hover */
-        }
-
-        /* Ensure video takes the full container size */
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-            /* Keep the same rounded edges for the video */
-        }
-
-
         .magic-message {
             font-size: 1.2rem;
             font-weight: bold;
@@ -237,71 +204,45 @@
             /* Color-changing animation */
             margin-bottom: 20px;
         }
-
-        @keyframes colorChange {
-            0% {
-                color: #ff4e50;
-            }
-
-            25% {
-                color: #f9d423;
-            }
-
-            50% {
-                color: #00c9ff;
-            }
-
-            75% {
-                color: #a18cd1;
-            }
-
-            100% {
-                color: #ff4e50;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="container-fluid card-container" style="display: flex; flex-direction: column;">
-        <h1 class="birthday-header">HAPPY B'DAY SANEEE!!!</h1>
+        <h1 class="birthday-header" id="birthday-header">HAPPY B'DAY!!!</h1>
         <div class="birthday-card" id="birthday-card" onclick="hideCard()">
             <div class="image-placeholder">
-                <img src="sani.jpg" id="birthday-image" width="100%" height="100%" alt="">
+                <img id="birthday-image" width="100%" height="100%" alt="">
                 <div class="hover-message">
-                    Click to see the LEGEND's birthday wish for Saneeshma
+                    Click to see the LEGEND's birthday wish!
                 </div>
             </div>
-            <h2 class="card-title">Happy Birthday <b>Thallee!!!</b>!</h2>
-            <p class="card-message">AAYUSS ORU VARSHAM KOODE KORNJENN ORTHAL KOLLAAM!</p>
+            <h2 class="card-title" id="card-title"></h2>
+            <p class="card-message" id="card-message"></p>
 
             <!-- New Magic Message -->
             <div class="magic-message">
-                Photoyil thottal oru MAGIC kaanaam&#128513;
+                Photoyil thottal oru MAGIC kaanaam
             </div>
         </div>
 
         <div class="video-container" id="video-container" style="display: none;" onclick="hideVideo()">
             <video id="birthday-video" width="100%" height="100%" playsinline>
-                <source src="VN20241002_214116.mp4" type="video/mp4">
+                <source src="" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
     </div>
 
-
     <main></main>
-    <footer>
+    <footer></footer>
 
-    </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
     <script>
         // Disable right-click
         document.addEventListener('contextmenu', function (event) {
@@ -312,47 +253,64 @@
         const videoContainer = document.getElementById('video-container');
         const birthdayImage = document.getElementById('birthday-image');
         const birthdayVideo = document.getElementById('birthday-video');
+        const birthdayHeader = document.getElementById('birthday-header');
+        const cardTitle = document.getElementById('card-title');
+        const cardMessage = document.getElementById('card-message');
 
-        // Function to hide the card and show the video
-        function hideCard() {
-            birthdayCard.style.display = 'none'; // Hide the birthday card
-            videoContainer.style.display = 'block'; // Show the video container
-            birthdayVideo.currentTime = 0; // Ensure video plays from the beginning
-            birthdayVideo.play(); // Play the video
-        };
-
-        // Function to hide the video and show the card
-        function hideVideo() {
-            birthdayVideo.pause(); // Pause the video
-            videoContainer.style.display = 'none'; // Hide the video container
-            birthdayCard.style.display = 'block'; // Show the birthday card
-        };
-        const today = new Date();
-        const isBirthday = (today.getMonth() === 9 && today.getDate() === 3); // Months are zero-indexed
-
-        if (!isBirthday) {
-            function displayDateTime() {
-                const now = new Date();
-                const formattedDateTime = now.toLocaleString(); // Format the date and time
-                document.getElementById('dateTimeMessage').innerHTML = `INN BIRTHDAY ONNULLA OOLE!<br>${formattedDateTime}`;
+        // Array of birthdays
+        const birthdays = [
+            {
+                name: 'Sani',
+                date: '10/03',
+                image: 'sani.jpg',
+                message: 'AAYUSS ORU VARSHAM KOODE KORNJENN ORTHAL KOLLAAM!',
+                title: 'Happy Birthday <b>Thallee!!!</b>!',
+                video: 'VN20241002_214116.mp4'
+            },
+            {
+                name: 'Abhay',
+                date: '10/14',
+                image: 'abhay.jpg',
+                message: 'MARANATHILOTT ULLA  YATHRAYIL NI ORU PADI KOODE MUNNOTT VECHIRIKKUNNU!!',
+                title: 'Happy Birthday <b>Meiraaa!!!</b>!',
+                video: 'abhay_video.mp4'
             }
+        ];
 
-            // Create a new element for the message
-            const messageDiv = document.createElement('div');
-            messageDiv.id = 'dateTimeMessage';
-            messageDiv.style.color = '#fff';
-            messageDiv.style.textAlign = 'center';
-            messageDiv.style.marginTop = '20%';
-            document.body.innerHTML = ''; // Clear the body content
-            document.body.appendChild(messageDiv); // Append the new message div
+        function checkBirthday() {
+            const today = new Date();
+            const currentDate = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}`;
 
-            // Call the function once to display the initial time
-            displayDateTime();
-            // Update the time every second
-            setInterval(displayDateTime, 1000);
+            let birthday = birthdays.find(b => b.date === currentDate);
 
-
+            if (birthday) {
+                // Update card content based on whose birthday it is
+                birthdayImage.src = birthday.image;
+                birthdayVideo.src = birthday.video;
+                cardTitle.innerHTML = birthday.title;
+                cardMessage.textContent = birthday.message;
+                birthdayCard.style.display = 'block';  // Show card if birthday is found
+            } else {
+                birthdayCard.style.display = 'none';  // Hide card if not a birthday
+                birthdayHeader.textContent = `Inn Birthday Onnulla oolee!!Time now: ${today.toLocaleTimeString()}`;
+            }
         }
+
+        function hideCard() {
+            birthdayCard.style.display = 'none';
+            videoContainer.style.display = 'block';
+            birthdayVideo.play();
+        }
+
+        function hideVideo() {
+            videoContainer.style.display = 'none';
+            birthdayCard.style.display = 'block';
+            birthdayVideo.pause();
+            birthdayVideo.currentTime = 0;
+        }
+
+        // Check the birthday on page load
+        checkBirthday();
     </script>
 </body>
 
