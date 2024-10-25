@@ -214,7 +214,7 @@
             <div class="image-placeholder">
                 <img id="birthday-image" width="100%" height="100%" alt="">
                 <div class="hover-message">
-                    Click to see the LEGEND's birthday wish!
+                    Click to see the LEGENDERY video!
                 </div>
             </div>
             <h2 class="card-title" id="card-title"></h2>
@@ -253,8 +253,49 @@
         const videoContainer = document.getElementById('video-container');
         const birthdayImage = document.getElementById('birthday-image');
         const birthdayVideo = document.getElementById('birthday-video');
+        const birthdayHeader = document.getElementById('birthday-header');
+        const cardTitle = document.getElementById('card-title');
+        const cardMessage = document.getElementById('card-message');
 
-        // Function to hide the card and show the video
+        // Array of birthdays
+        const birthdays = [
+            {
+                name: 'Sani',
+                date: '10/03',
+                image: 'sani.jpg',
+                message: 'AAYUSS ORU VARSHAM KOODE KORNJENN ORTHAL KOLLAAM!',
+                title: 'Happy Birthday <b>Thallee!!!</b>!',
+                video: 'VN20241002_214116.mp4'
+            },
+            {
+                name: 'Abhay',
+                date: '10/14',
+                image: 'abhay.jpg',
+                message: 'MARANATHILOTT ULLA  YATHRAYIL NI ORU PADI KOODE MUNNOTT VECHIRIKKUNNU!!',
+                title: 'Happy Birthday <b>Meiraaa!!!</b>!',
+                video: 'abhay_video.mp4'
+            }
+        ];
+
+        function checkBirthday() {
+            const today = new Date();
+            const currentDate = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}`;
+
+            let birthday = birthdays.find(b => b.date === currentDate);
+
+            if (birthday) {
+                // Update card content based on whose birthday it is
+                birthdayImage.src = birthday.image;
+                birthdayVideo.src = birthday.video;
+                cardTitle.innerHTML = birthday.title;
+                cardMessage.textContent = birthday.message;
+                birthdayCard.style.display = 'block';  // Show card if birthday is found
+            } else {
+                birthdayCard.style.display = 'none';  // Hide card if not a birthday
+                birthdayHeader.textContent = `Inn Birthday Onnulla oolee!!Time now: ${today.toLocaleTimeString()}`;
+            }
+        }
+
         function hideCard() {
             birthdayCard.style.display = 'none';
             videoContainer.style.display = 'block';
